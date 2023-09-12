@@ -1,6 +1,17 @@
-CREATE DATABASE mock_data;
+-- CREATE DATABASE mock_data;
 
 USE mock_data;
+
+-- CREATE USER 'ctp'@'localhost' IDENTIFIED WITH mysql_native_password BY 'MD3306';
+
+-- Shopify transactions table
+CREATE TABLE shopify_transactions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  email VARCHAR(255),
+  order_number VARCHAR(255),
+  paid TINYINT,
+  INDEX idx_shopify_transactions_email_order_number (email, order_number)
+);
 
 -- WordPress profiles table
 CREATE TABLE wordpress_profiles (
@@ -12,31 +23,6 @@ CREATE TABLE wordpress_profiles (
   published TINYINT,
   FOREIGN KEY (email, order_number) REFERENCES shopify_transactions(email, order_number)
 );
-
--- Shopify transactions table
-CREATE TABLE shopify_transactions (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(255),
-  order_number VARCHAR(255),
-  paid TINYINT,
-  INDEX idx_shopify_transactions_email_order_number (email, order_number)
-);
-
--- Mock data for wordpress_profiles table
-INSERT INTO wordpress_profiles (email, order_number, content, submitted, published)
-VALUES
-  ('user1@example.com', 'ORD001', 'Profile content for user 1', 1, 1),
-  ('user2@example.com', 'ORD002', 'Profile content for user 2', 1, 1),
-  ('user3@example.com', 'ORD003', 'Profile content for user 3', 0, 0),
-  ('user4@example.com', 'ORD004', 'Profile content for user 4', 1, 1),
-  ('user5@example.com', 'ORD005', 'Profile content for user 5', 1, 0),
-  ('user6@example.com', 'ORD006', 'Profile content for user 6', 1, 1),
-  ('user7@example.com', 'ORD007', 'Profile content for user 7', 1, 0),
-  ('user8@example.com', 'ORD008', 'Profile content for user 8', 1, 0),
-  ('user9@example.com', 'ORD009', 'Profile content for user 9', 1, 1),
-  ('user10@example.com', 'ORD010', 'Profile content for user 10', 0, 0);
-
-
 
 -- Mock data for shopify_transactions table
 INSERT INTO shopify_transactions (email, order_number, paid)
@@ -51,6 +37,20 @@ VALUES
   ('user8@example.com', 'ORD008', 0),
   ('user9@example.com', 'ORD009', 1),
   ('user10@example.com', 'ORD010', 1);
+
+-- Mock data for wordpress_profiles table
+INSERT INTO wordpress_profiles (email, order_number, content, submitted, published)
+VALUES
+  ('user1@example.com', 'ORD001', 'Profile content for user 1', 1, 1),
+  ('user2@example.com', 'ORD002', 'Profile content for user 2', 1, 1),
+  ('user3@example.com', 'ORD003', 'Profile content for user 3', 0, 0),
+  ('user4@example.com', 'ORD004', 'Profile content for user 4', 1, 1),
+  ('user5@example.com', 'ORD005', 'Profile content for user 5', 1, 0),
+  ('user6@example.com', 'ORD006', 'Profile content for user 6', 1, 1),
+  ('user7@example.com', 'ORD007', 'Profile content for user 7', 1, 0),
+  ('user8@example.com', 'ORD008', 'Profile content for user 8', 1, 0),
+  ('user9@example.com', 'ORD009', 'Profile content for user 9', 1, 1),
+  ('user10@example.com', 'ORD010', 'Profile content for user 10', 0, 0);
 
 
 
