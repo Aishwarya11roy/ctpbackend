@@ -527,11 +527,11 @@ def format_profiles(profiles):
 
 @app.route('/api/profiles', methods=['GET'])
 def get_profiles():
-    db_host = '127.0.0.1'
-    db_port = 3306
-    db_user = 'root'
-    db_password = 'Scorpio@2024'
-    db_database = 'mock_data'
+    db_host = '---'
+    db_port = ---
+    db_user = '--'
+    db_password = --
+    db_database = '--'
 
     db_connection = mysql.connector.connect(
         host=db_host,
@@ -558,11 +558,11 @@ def get_profiles():
 
 @app.route('/api/profile/<uniqueId>', methods=['GET'])
 def get_profile(uniqueId):
-    db_host = '127.0.0.1'
-    db_port = 3306
-    db_user = 'root'
-    db_password = 'Scorpio@2024'
-    db_database = 'mock_data'
+    db_host = '--'
+    db_port = --
+    db_user = '--'
+    db_password = '--'
+    db_database = '-'
 
     db_connection = mysql.connector.connect(
         host=db_host,
